@@ -1,0 +1,82 @@
+<core:FragmentDefinition 
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core">
+
+    <Dialog>
+    <f:SimpleForm id="updateBookForm"  editable="true"  layout="ResponsiveGridLayout" labelSpanL="3" labelSpanM="3" emptySpanL="0" emptySpanM="0" columnsL="3" columnsM="3" class="editableForm"> 
+    <f:content>
+    <core:Title text="Book Infromation"/>
+    <Label text="ISBN">
+    <layoutData>
+       <l:GridData span="L2 M2 S2"/>
+        </layoutData>
+        </Label>
+        <Input  id="isbn"  placeholder="ISBN">
+        <!-- <Input value="{/isbn}" placeholder="Authon"/>
+        <Input value="{/isbn}" placeholder="Authon"> -->
+        <!-- <layoutData>
+         <l:GridData span="L2 M2 S2"/>
+        </layoutData> -->
+        </Input>
+        
+    <Label text="{i18n>author}">
+     <layoutData>
+     <l:GridData span="L2 M2 S2"/>
+        </layoutData>
+        </Label>
+        <Input id="author" placeholder="Author"/>  
+     <Label text="{i18n>title}">
+      <layoutData>
+     <l:GridData span="L2 M2 S2"/>
+        </layoutData>
+        </Label>
+        <Input id="title" placeholder="Title">
+        </Input> 
+     <Label text="{i18n>datepublish}">
+      <layoutData>
+     <l:GridData span="L2 M2 S2"/>
+        </layoutData>
+        </Label>
+        <DatePicker id="date1"  placeholder="Publish Date"/>
+    <Label text="{i18n>languageD}">
+     <layoutData>
+    <l:GridData span="L2 M2 S2"/>
+        </layoutData>
+        </Label>
+        <Input id="language" placeholder="Language"/>
+        
+    <Label text="{i18n>totalnrBooks}">
+     <layoutData>
+    <l:GridData span="L2 M2 S2"/>
+        </layoutData>
+        </Label>
+        <Input  id="nrbooks"  placeholder="Number Books"/>
+
+     <Label text="{i18n>available}">
+     <layoutData>
+    <l:GridData span="L2 M2 S2"/>
+        </layoutData>
+        </Label>
+        <Input id="availablebooks" placeholder="Available Books"/>
+    
+
+    <Label text=""/>
+    <Button text="Save" type="Accept" press="handleUpdatePress">
+    <layoutData>
+    <l:GridData span="L4 M4 S4"/>
+        </layoutData>
+    </Button>
+
+    <Button text="Cancel" type="Reject" press="handelCancel">
+    <layoutData>
+    <l:GridData span="L4 M4 S4"/>
+        </layoutData>
+    </Button>
+    </f:content>
+    </f:SimpleForm>
+    </Dialog>
+
+
+</core:FragmentDefinition>

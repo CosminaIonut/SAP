@@ -1,0 +1,106 @@
+<mvc:View controllerName="org.ubb.books.controller.Searchlist2"
+ xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" displayBlock="true" xmlns="sap.m" xmlns:fb="sap.ui.comp.filterbar">
+	
+			<Page title="{i18n>searchbooks}"  showNavButton="true" navButtonPress=".onNavBack">
+				<content>
+					<fb:FilterBar clear="onClear" search="onSearch" showClearButton="true" showClearOnFB="true">
+						
+						<fb:filterGroupItems>
+							<fb:FilterGroupItem visibleInFilterBar="true" groupName="Book" groupTitle="{i18n>Book}" name="ISBN" label="{i18n>isbn}">
+								<fb:control>
+									<Input id="isbn" value="{filters>/isbn}" />
+								</fb:control>				
+							</fb:FilterGroupItem>
+							
+							<fb:FilterGroupItem visibleInFilterBar="true" groupName="Book" groupTitle="{i18n>Book}" name="Title" label="{i18n>title}">
+								<fb:control>
+									<Input  id="title" value="{filters>/title}" />
+								</fb:control>				
+							</fb:FilterGroupItem>				
+							
+							<fb:FilterGroupItem visibleInFilterBar="true" groupName="Book" groupTitle="{i18n>Book}" name="Author" label="{i18n>author}">
+								<fb:control>
+									<Input id="author" value="{filters>/author}" />
+								</fb:control>				
+							</fb:FilterGroupItem>			
+							
+							<fb:FilterGroupItem visibleInFilterBar="true" groupName="Book" groupTitle="{i18n>Book}" name="Language" label="{i18n>language}">
+								<fb:control>
+									<Input  id="language" value="{filters>/language}" />
+								</fb:control>				
+							</fb:FilterGroupItem>
+                            <fb:FilterGroupItem visibleInFilterBar="true" groupName="Book" groupTitle="{i18n>Book}" name="StartDate" label="{i18n>startdate}">
+								<fb:control>
+						            <DatePicker id="datestart"/>
+					            </fb:control>					
+							</fb:FilterGroupItem>
+                            <fb:FilterGroupItem visibleInFilterBar="true" groupName="Book" groupTitle="{i18n>Book}" name="EndDate" label="{i18n>enddate}">
+								<fb:control>
+						            <DatePicker id="dateend"/>
+					            </fb:control>			
+							</fb:FilterGroupItem>
+						</fb:filterGroupItems>			
+	    			</fb:FilterBar>	
+
+
+                    <Table id="searchBooks"
+		items="{
+			path: '/SearchBooks',
+			sorter: {
+				path: 'Title'
+			}
+		}"
+		growing="true"
+		growingThreshold="10">
+	
+		<columns>
+			<Column>
+				<Text text="{i18n>title}" />
+			</Column>
+			<Column>
+				<Text text="{i18n>author}" />
+			</Column>
+			<Column>
+				<Text text="{i18n>datepublish}" />
+			</Column>
+			<Column>
+				<Text text="{i18n>language}" />
+			</Column>
+        	<Column>
+				<Text text="{i18n>available}" />
+			</Column>
+			 <Column>
+				<Text text="{i18n>action}" />
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem>
+				<cells>
+					<ObjectIdentifier
+						title="{Title}"
+						text="{Isbn}"/>
+					<Text text="{Author}" />
+					<Text text="{ 
+							path: 'PublishDate',
+							type: 'sap.ui.model.type.Date'
+               			}" 
+					/>
+					<Text text="{Language}" />
+					<Text text="{NumberBooks}" />
+					<HBox >
+			
+						<Button icon="sap-icon://bbyd-active-sales" press="handleInsertCheckout"></Button>
+						
+					</HBox>
+					
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+	
+
+		</content>
+			</Page>
+	
+</mvc:View>

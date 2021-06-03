@@ -1,0 +1,100 @@
+<mvc:View
+   controllerName="org.ubb.books.controller.Booklist"
+   xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m">
+
+	<Page title="{i18n>homePageTitle}">
+			
+					
+				
+			
+		
+
+   <Table id="idBooksTable"
+		items="{
+			path: '/Books',
+			sorter: {
+				path: 'Title'
+			}
+		}"
+		growing="true"
+		growingThreshold="10">
+		<headerToolbar>
+		<Toolbar> 
+		<ToolbarSpacer>
+		</ToolbarSpacer>
+		
+		<content>
+		
+			<Button
+				icon="sap-icon://add"
+				text="Add Book"
+				press="handleAddBook"/>
+			<Button
+				
+				icon="sap-icon://course-book"
+				text="Borrowed Books"
+				press="onPress"/>
+			<Button
+				
+				icon="sap-icon://search"
+				text="Search Books"
+				press="onPressSearch"/>
+		</content>
+		</Toolbar>
+
+		</headerToolbar>
+		<columns>
+			<Column>
+				<Text text="{i18n>title}" />
+			</Column>
+			<Column>
+				<Text text="{i18n>author}" />
+			</Column>
+			<Column>
+				<Text text="{i18n>datepublish}" />
+			</Column>
+			<Column>
+				<Text text="{i18n>language}" />
+			</Column>
+        	<Column>
+				<Text text="{i18n>available}" />
+			</Column>
+			 <Column>
+				<Text text="{i18n>totalbooks}" />
+			</Column>
+			 <Column>
+				<Text text="{i18n>action}" />
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem>
+				<cells>
+					<ObjectIdentifier
+						title="{Title}"
+						text="{Isbn}"/>
+					<Text text="{Author}" />
+					<Text text="{ 
+							path: 'PublishDate',
+							type: 'sap.ui.model.type.Date'
+               			}" 
+					/>
+					<Text text="{Language}" />
+					<Text text="{NumberBooksAvailable}" />
+					<Text text="{TotalNumberBooks}" />
+					<HBox >
+						
+						<Button icon="sap-icon://edit" press="handleUpdate"></Button>
+						<Button icon="sap-icon://delete" press="handleDelete"></Button>
+					</HBox>
+					<!-- <Text text="{= parseInt(${NumberBooksAvailable}) }" /> -->
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+	</Page>
+
+	
+   
+</mvc:View>

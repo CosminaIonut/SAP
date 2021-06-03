@@ -1,0 +1,146 @@
+<!-- <mvc:View
+   controllerName="org.ubb.books.controller.Searchlist"
+   xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m">
+
+  <Page
+  showNavButton="true"
+  navButtonPress=".onNavBack"
+>
+   <Table id="idBooksTable"
+		items="{
+			path: '/SearchBooks'
+		}"
+		growing="true"
+		growingThreshold="10">
+		<headerToolbar>
+		<Toolbar> 
+		<ToolbarSpacer>
+		</ToolbarSpacer>
+		
+		<content>
+		
+			
+		</content>
+		</Toolbar>
+
+		</headerToolbar>
+		<columns>
+			<Column>
+				<Text text="Title" />
+			</Column>
+			<Column>
+				<Text text="Author" />
+			</Column>
+			<Column>
+				<Text text="Publish Date" />
+			</Column>
+			<Column>
+				<Text text="Language" />
+			</Column>
+			<Column>
+				<Text text="Number of Books available" />
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem>
+				<cells>
+					<ObjectIdentifier
+						title="{Title}"
+						text="{Isbn}"/>
+					<Text text="{Author}" />
+                    	<Text text="{ 
+						
+							path: 'PublishDate',
+							type: 'sap.ui.model.type.Date'
+	
+               			}" 
+					/>
+					<Text text="{Language}" />
+					<Text text="{NumberBooks}" />
+					
+				
+				
+					
+				
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+	</Page>
+   
+</mvc:View> -->
+<mvc:View
+    controllerName="org.ubb.books.controller.Searchlist"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+	xmlns:smartTable="sap.ui.comp.smarttable"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	height="100%">
+<Page>
+<smartFilterBar:SmartFilterBar id="smartFilterBar"
+			entitySet="SearchBooks">
+			<!-- layout data used to make the table growing but the filter bar fixed -->
+			<smartFilterBar:layoutData>
+				<FlexItemData shrinkFactor="0" />
+			</smartFilterBar:layoutData>
+		</smartFilterBar:SmartFilterBar>
+	
+	<VBox fitContainer="false" height="600px">
+	    
+		<smartTable:SmartTable entitySet="SearchBooks" id="bookTable"
+			
+            smartFilterId="smartFilterBar" 
+			useVariantManagement="false" useTablePersonalisation="true" header="SearchBooks"
+			showRowCount="true" 
+            
+			enableAutoBinding="true" class="sapUiResponsiveContentPadding" enableAutoColumnWidth="true"
+            initiallyVisibleFields="Isbn,Title,Author,PublishDate,Language,NumberBooks">
+			<smartTable:layoutData>
+				<FlexItemData growFactor="1" baseSize="0%" />
+			</smartTable:layoutData>
+
+            	<smartTable:customToolbar>
+			<OverflowToolbar design="Transparent">
+				<ToolbarSpacer/>
+				<OverflowToolbarButton text="Test"/>
+				<OverflowToolbarButton icon="sap-icon://bbyd-active-sales" tooltip="Checkout" text="Checkout" press="checkout"/>
+				
+			</OverflowToolbar>
+		</smartTable:customToolbar>
+		</smartTable:SmartTable>
+         <!-- <Button text="CHECKOUT" press="checkout"></Button> -->
+        
+	</VBox>
+    </Page>
+</mvc:View>
+
+
+<!-- smartFilterId="smartFilterBar"
+			useVariantManagement="false"
+            useTablePersonalisation="true" 
+            tableType="ResponsiveTable"
+            header="SearchBooks"
+			showRowCount="true" 
+            persistencyKey="SmartTableRefApp_Explored"
+			enableAutoBinding="true" 
+            class="sapUiResponsiveContentPadding" 
+            enableAutoColumnWidth="true"  -->
+
+            <!-- <Table>
+            <columns>
+                <Column>
+                    <Text text="Action" />
+                </Column>
+            </columns>
+            <items>
+            	<ColumnListItem type="Navigation">
+					<cells>	
+						<Button icon="sap-icon://edit" press="handleUpdate"></Button>
+					</cells>		
+				</ColumnListItem>
+            </items>
+            </Table> -->
